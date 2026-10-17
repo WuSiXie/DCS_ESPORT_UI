@@ -32,6 +32,8 @@ def main():
     files['dist/DcsEsport/Scripts/Hooks/DcsEsportHook.lua']=ROOT/'dist/DcsEsport/Scripts/Hooks/DcsEsportHook.lua'
     files['runtime-bin/node.exe']=a.node
     files['licenses/Node-LICENSE.txt']=a.node_license
+    files['LICENSE']=ROOT/'LICENSE'
+    files['licenses/Microsoft-NET-Framework-NOTICE.md']=ROOT/'docs/implementation/microsoft-net-framework-notice.md'
     files['docs/使用说明.pdf']=ROOT/'output/pdf/DCS电竞UI使用说明.pdf'
     for name in ['Server.ps1','Director.ps1','Configure-Network.ps1','install.ps1','accounts.py']:
         files['tools/'+name]=ROOT/'tools'/name

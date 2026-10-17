@@ -2,6 +2,8 @@
 
 通过浏览器呈现 DCS 比赛信息，支持多个导播端分别控制输出画面。
 
+下载成品请前往 [GitHub Releases](https://github.com/WuSiXie/DCS_ESPORT_UI/releases)：提供完整离线安装包、备用 .NET Framework 离线包、使用说明及 SHA-256 校验值。微软组件许可与来源见 [许可说明](docs/implementation/microsoft-net-framework-notice.md)。
+
 Windows 用户可运行构建生成的离线安装包 `dist/installer/DCS-Esport-UI-Setup-0.8.0.exe`：原生外层自动检测 .NET Framework 4.8 或更高版本，缺少时调用内置微软离线安装包（需要 Windows 管理员授权，不强制重启）。内置 Node.js，支持从注册表识别“保存的游戏”、选择多个 DCS 配置目录、首次账号设置，以及启动前自动检查与修复。修复保留账号和画面设置。源码仓库不包含安装包及第三方运行库，构建步骤见 [安装与自动修复](docs/implementation/installer.md)；操作指南见 [使用说明 PDF](output/pdf/DCS电竞UI使用说明.pdf)。
 
 当前版本：C++ 0.4.1、导播 0.8.0、HOOK 0.3.2 / 采集器 0.1.5。已提供多导播鉴权、订阅、中文控制台和 OBS 透明输出，两侧选手标牌采用油量条，中央留给游戏画面。支持自定义队伍与选手池、比分/队标、来袭导弹提示、实时开关、取消预览、元素拖动及自适应缩放。
