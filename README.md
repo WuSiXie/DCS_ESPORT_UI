@@ -69,3 +69,9 @@ flowchart LR
 ```
 
 图中全部链路已实现并通过实机测试；主服务至导播使用 WS/WSS，导播至本机浏览器使用 HTTP + SSE。账号密码不会保存到导播配置，上游会话不会发送给输出页。
+
+## 许可证
+
+本项目原创代码采用 [**PolyForm Noncommercial 1.0.0**](https://polyformproject.org/licenses/noncommercial/1.0.0) 许可，完整条款见 [LICENSE](LICENSE)。使用、修改及分发须遵守该许可规定的非商业用途等条件；商业使用需另行获得授权。
+
+第三方依赖及其附带材料仍遵循各自的许可证。
