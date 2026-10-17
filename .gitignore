@@ -1,0 +1,14 @@
+.tools/
+dist/
+runtime/
+__pycache__/
+*.pyc
+build*/
+tmp/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12

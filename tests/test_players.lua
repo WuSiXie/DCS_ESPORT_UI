@@ -1,0 +1,18 @@
+local Json=require('src.shared.json')
+local Players=require('src.hook.players')
+test('player presence only dies on disconnect, reconnect follows new slot; no private attributes',function()
+    local time=0;local list={2};local info={name='Ace',side=1,slot=20,ucid='secret',ipaddr='private'}
+    local p=Players.new({Json=Json,now=function()return time end,net={get_player_list=function()return list end,get_player_info=function()return info end}})
+    p:tick();equal(p.payload.records[1].connected,true);equal(p.payload.records[1].ucid,nil);equal(p.payload.records[1].ipaddr,nil)
+    info.slot='';time=1;p:tick();equal(p.payload.records[1].connected,true)
+    list={};time=2;p:tick();equal(p.payload.records[1].connected,true)
+    p:disconnect(2);equal(p.payload.records[1].connected,false);equal(p.payload.records[1].disconnects,1)
+    p:disconnect(2);equal(p.payload.records[1].disconnects,1)
+    list={2};info.slot=30;time=3;p:tick();equal(p.payload.records[1].connected,true);equal(p.payload.records[1].generation,2);equal(p.payload.records[1].slot,'30')
+    p:reset();equal(#p.payload.records,0)
+end)
+test('player presence unavailable queries never invent disconnects and poll once a second',function()
+    local time=0;local calls=0;local fail=false
+    local p=Players.new({Json=Json,now=function()return time end,net={get_player_list=function()calls=calls+1;if fail then error('unavailable')end;return {2} end,get_player_info=function()return {name='Ace'}end}})
+    p:tick();p:tick();equal(calls,1);fail=true;time=1;p:tick();equal(p.payload.supported,false);equal(p.payload.records[1].connected,true)
+end)
